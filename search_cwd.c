@@ -33,10 +33,10 @@ char *search_cwd(char *filename, char *er)
 				strcpy(ret, "./");
 				strcat(ret, filename);
 				closedir(dir);
-				if (!(access(ret, X_OK)))
-					return (ret);
-				else
+				if ((access(ret, X_OK)))
 					write(2, er, 5);
+				else
+					return (ret);
 			}
 		}
 	}
